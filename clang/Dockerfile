@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libncurses-dev \
     xz-utils \
     zip \
+    ccache \
  && rm -rf /var/lib/apt/lists/*
 
 RUN git clone https://github.com/kdrag0n/proton-clang.git /toolchain --depth=1
