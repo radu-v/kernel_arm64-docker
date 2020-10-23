@@ -19,8 +19,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 RUN git clone https://github.com/kdrag0n/proton-clang.git /toolchain --depth=1
 
-ENV PATH /toolchain/bin:$PATH
-ENV ARCH arm64
-ENV CROSS_COMPILE aarch64-linux-gnu-
-ENV CROSS_COMPILE_ARM32 arm-linux-gnueabi-
+ENV KBUILD_BUILD_USER "circleci"
 ENV KBUILD_BUILD_HOST github.com
+ENV PATH /toolchain/bin:$PATH
+ENV LD_LIBRARY_PATH /toolchain/lib:$LD_LIBRARY_PATH
+ENV ARCH arm64
+ENV SUBARCH arm64
+ENV AR llvm-ar
+ENV NM llvm-nm
+ENV OBJCOPY llvm-objcopy
+ENV OBJDUMP llvm-objdump
+ENV STRIP llvm-strip
